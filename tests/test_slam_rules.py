@@ -1017,6 +1017,17 @@ def test_optimization_step_uses_mature_gaussians_for_pose_branch(
     monkeypatch, optimize_gaussians, is_test
 ):
     scene_model = _import_scene_model_with_stubs(monkeypatch)
+    # The scene and renderer below are CPU doubles; keep the random background
+    # on CPU too without changing the production CUDA allocation or skipping
+    # the pose/mapping gradient checks on CPU-only runners.
+    background = torch.tensor([0.2, 0.4, 0.6])
+
+    def fake_background_rand(*size, **kwargs):
+        assert size == (3,)
+        assert kwargs == {"device": "cuda"}
+        return background
+
+    monkeypatch.setattr(scene_model.torch, "rand", fake_background_rand)
     model = object.__new__(scene_model.SceneModel)
     model.gaussian_params = {
         "xyz": {"val": torch.ones(3, 3, requires_grad=True)}
@@ -1090,6 +1101,7 @@ def test_optimization_step_uses_mature_gaussians_for_pose_branch(
         detach_gaussians=False,
         **kwargs,
     ):
+        assert bg is background
         render_calls.append({
             "gaussian_mask": gaussian_mask,
             "detach_pose": detach_pose,
@@ -1551,3 +1563,4 @@ def test_evaluate_test_frame_does_not_delete_missing_invdepth(monkeypatch):
 
     assert set(metrics) == {"PSNR", "SSIM"}
     assert metrics["SSIM"] == 0.5
+
