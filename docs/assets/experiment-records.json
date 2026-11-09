@@ -1,0 +1,598 @@
+{
+  "project": "TEST2-SLAM",
+  "repository": "https://github.com/ZhuZhenyu1999/OF-GS",
+  "record_date": "2026-11-09",
+  "aggregation": "Equal-weight average over recorded sequences",
+  "hardware": "RTX 4090",
+  "notes": [
+    "Recorded Ours values only, not a cross-method ranking.",
+    "Evaluation frames, LPIPS settings, and timing scopes across methods are not fully standardized.",
+    "These historical summaries do not establish that every run used the current source revision."
+  ],
+  "datasets": [
+    {
+      "name": "Waymo",
+      "sequence_count": 9,
+      "source": "grouped_table_Waymo_20261109.json",
+      "rows": [
+        {
+          "sequence": "100613",
+          "metric": "ATE",
+          "value": 0.3099041501875159,
+          "display": "0.310"
+        },
+        {
+          "sequence": "100613",
+          "metric": "PSNR",
+          "value": 28.64870031674703,
+          "display": "28.65"
+        },
+        {
+          "sequence": "100613",
+          "metric": "SSIM",
+          "value": 0.8861898481845856,
+          "display": "0.886"
+        },
+        {
+          "sequence": "100613",
+          "metric": "LPIPS",
+          "value": 0.1957859375203649,
+          "display": "0.196"
+        },
+        {
+          "sequence": "100613",
+          "metric": "TIME",
+          "value": 164.8563067913055,
+          "display": "164.86"
+        },
+        {
+          "sequence": "13476",
+          "metric": "ATE",
+          "value": 0.5901376162493016,
+          "display": "0.590"
+        },
+        {
+          "sequence": "13476",
+          "metric": "PSNR",
+          "value": 26.78803791602452,
+          "display": "26.79"
+        },
+        {
+          "sequence": "13476",
+          "metric": "SSIM",
+          "value": 0.8378524978955587,
+          "display": "0.838"
+        },
+        {
+          "sequence": "13476",
+          "metric": "LPIPS",
+          "value": 0.2047933160016934,
+          "display": "0.205"
+        },
+        {
+          "sequence": "13476",
+          "metric": "TIME",
+          "value": 172.1553776264191,
+          "display": "172.16"
+        },
+        {
+          "sequence": "106762",
+          "metric": "ATE",
+          "value": 0.9259792556060228,
+          "display": "0.926"
+        },
+        {
+          "sequence": "106762",
+          "metric": "PSNR",
+          "value": 28.78209439190951,
+          "display": "28.78"
+        },
+        {
+          "sequence": "106762",
+          "metric": "SSIM",
+          "value": 0.8903839994560588,
+          "display": "0.890"
+        },
+        {
+          "sequence": "106762",
+          "metric": "LPIPS",
+          "value": 0.2085507258095524,
+          "display": "0.209"
+        },
+        {
+          "sequence": "106762",
+          "metric": "TIME",
+          "value": 131.3146905899048,
+          "display": "131.31"
+        },
+        {
+          "sequence": "132384",
+          "metric": "ATE",
+          "value": 0.4581275988429486,
+          "display": "0.458"
+        },
+        {
+          "sequence": "132384",
+          "metric": "PSNR",
+          "value": 25.67123356319609,
+          "display": "25.67"
+        },
+        {
+          "sequence": "132384",
+          "metric": "SSIM",
+          "value": 0.8818114768891108,
+          "display": "0.882"
+        },
+        {
+          "sequence": "132384",
+          "metric": "LPIPS",
+          "value": 0.2604896135273434,
+          "display": "0.260"
+        },
+        {
+          "sequence": "132384",
+          "metric": "TIME",
+          "value": 117.7084875106812,
+          "display": "117.71"
+        },
+        {
+          "sequence": "152706",
+          "metric": "ATE",
+          "value": 0.2733423469225532,
+          "display": "0.273"
+        },
+        {
+          "sequence": "152706",
+          "metric": "PSNR",
+          "value": 27.72814045349757,
+          "display": "27.73"
+        },
+        {
+          "sequence": "152706",
+          "metric": "SSIM",
+          "value": 0.8636411925156912,
+          "display": "0.864"
+        },
+        {
+          "sequence": "152706",
+          "metric": "LPIPS",
+          "value": 0.2552450982232888,
+          "display": "0.255"
+        },
+        {
+          "sequence": "152706",
+          "metric": "TIME",
+          "value": 200.5572757720947,
+          "display": "200.56"
+        },
+        {
+          "sequence": "153495",
+          "metric": "ATE",
+          "value": 0.7055976056076951,
+          "display": "0.706"
+        },
+        {
+          "sequence": "153495",
+          "metric": "PSNR",
+          "value": 28.5820484161377,
+          "display": "28.58"
+        },
+        {
+          "sequence": "153495",
+          "metric": "SSIM",
+          "value": 0.8917204141616821,
+          "display": "0.892"
+        },
+        {
+          "sequence": "153495",
+          "metric": "LPIPS",
+          "value": 0.217924935122331,
+          "display": "0.218"
+        },
+        {
+          "sequence": "153495",
+          "metric": "TIME",
+          "value": 243.2916731834412,
+          "display": "243.29"
+        },
+        {
+          "sequence": "158686",
+          "metric": "ATE",
+          "value": 0.575340464417436,
+          "display": "0.575"
+        },
+        {
+          "sequence": "158686",
+          "metric": "PSNR",
+          "value": 27.29095697402954,
+          "display": "27.29"
+        },
+        {
+          "sequence": "158686",
+          "metric": "SSIM",
+          "value": 0.8525895449248228,
+          "display": "0.853"
+        },
+        {
+          "sequence": "158686",
+          "metric": "LPIPS",
+          "value": 0.1655439995229244,
+          "display": "0.166"
+        },
+        {
+          "sequence": "158686",
+          "metric": "TIME",
+          "value": 180.2959814071655,
+          "display": "180.30"
+        },
+        {
+          "sequence": "163453",
+          "metric": "ATE",
+          "value": 1.260337404142329,
+          "display": "1.260"
+        },
+        {
+          "sequence": "163453",
+          "metric": "PSNR",
+          "value": 25.26154859499498,
+          "display": "25.26"
+        },
+        {
+          "sequence": "163453",
+          "metric": "SSIM",
+          "value": 0.8240149319171906,
+          "display": "0.824"
+        },
+        {
+          "sequence": "163453",
+          "metric": "LPIPS",
+          "value": 0.2734154489907352,
+          "display": "0.273"
+        },
+        {
+          "sequence": "163453",
+          "metric": "TIME",
+          "value": 187.5669114589691,
+          "display": "187.57"
+        },
+        {
+          "sequence": "405841",
+          "metric": "ATE",
+          "value": 0.5022383596587711,
+          "display": "0.502"
+        },
+        {
+          "sequence": "405841",
+          "metric": "PSNR",
+          "value": 28.0161385734876,
+          "display": "28.02"
+        },
+        {
+          "sequence": "405841",
+          "metric": "SSIM",
+          "value": 0.8807926947871844,
+          "display": "0.881"
+        },
+        {
+          "sequence": "405841",
+          "metric": "LPIPS",
+          "value": 0.1918595380460223,
+          "display": "0.192"
+        },
+        {
+          "sequence": "405841",
+          "metric": "TIME",
+          "value": 173.970734834671,
+          "display": "173.97"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "ATE",
+          "value": 0.622333866848286,
+          "display": "0.622"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "PSNR",
+          "value": 27.418766577780506,
+          "display": "27.42"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "SSIM",
+          "value": 0.8676662889702095,
+          "display": "0.868"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "LPIPS",
+          "value": 0.2192898458626951,
+          "display": "0.219"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "TIME",
+          "value": 174.6352710194058,
+          "display": "174.64"
+        }
+      ]
+    },
+    {
+      "name": "KITTI",
+      "sequence_count": 8,
+      "source": "grouped_table_KITTI_20261109.json",
+      "rows": [
+        {
+          "sequence": "00",
+          "metric": "ATE",
+          "value": 0.5183746235599778,
+          "display": "0.518"
+        },
+        {
+          "sequence": "00",
+          "metric": "PSNR",
+          "value": 19.48011919856071,
+          "display": "19.48"
+        },
+        {
+          "sequence": "00",
+          "metric": "SSIM",
+          "value": 0.6918296578029791,
+          "display": "0.692"
+        },
+        {
+          "sequence": "00",
+          "metric": "LPIPS",
+          "value": 0.2500348314642906,
+          "display": "0.250"
+        },
+        {
+          "sequence": "00",
+          "metric": "TIME",
+          "value": 122.1067016124725,
+          "display": "122.11"
+        },
+        {
+          "sequence": "02",
+          "metric": "ATE",
+          "value": 0.6062958591219866,
+          "display": "0.606"
+        },
+        {
+          "sequence": "02",
+          "metric": "PSNR",
+          "value": 19.60262327194214,
+          "display": "19.60"
+        },
+        {
+          "sequence": "02",
+          "metric": "SSIM",
+          "value": 0.6275219929218292,
+          "display": "0.628"
+        },
+        {
+          "sequence": "02",
+          "metric": "LPIPS",
+          "value": 0.3190572023391723,
+          "display": "0.319"
+        },
+        {
+          "sequence": "02",
+          "metric": "TIME",
+          "value": 193.1834948062897,
+          "display": "193.18"
+        },
+        {
+          "sequence": "03",
+          "metric": "ATE",
+          "value": 0.6694661193154923,
+          "display": "0.669"
+        },
+        {
+          "sequence": "03",
+          "metric": "PSNR",
+          "value": 20.45134504636129,
+          "display": "20.45"
+        },
+        {
+          "sequence": "03",
+          "metric": "SSIM",
+          "value": 0.6172903776168823,
+          "display": "0.617"
+        },
+        {
+          "sequence": "03",
+          "metric": "LPIPS",
+          "value": 0.3175905489673217,
+          "display": "0.318"
+        },
+        {
+          "sequence": "03",
+          "metric": "TIME",
+          "value": 134.0322105884552,
+          "display": "134.03"
+        },
+        {
+          "sequence": "05",
+          "metric": "ATE",
+          "value": 0.6176350039008259,
+          "display": "0.618"
+        },
+        {
+          "sequence": "05",
+          "metric": "PSNR",
+          "value": 19.46016983985901,
+          "display": "19.46"
+        },
+        {
+          "sequence": "05",
+          "metric": "SSIM",
+          "value": 0.6326608681678771,
+          "display": "0.633"
+        },
+        {
+          "sequence": "05",
+          "metric": "LPIPS",
+          "value": 0.2983241325616837,
+          "display": "0.298"
+        },
+        {
+          "sequence": "05",
+          "metric": "TIME",
+          "value": 144.728545665741,
+          "display": "144.73"
+        },
+        {
+          "sequence": "06",
+          "metric": "ATE",
+          "value": 2.907561495685583,
+          "display": "2.908"
+        },
+        {
+          "sequence": "06",
+          "metric": "PSNR",
+          "value": 17.75677499771118,
+          "display": "17.76"
+        },
+        {
+          "sequence": "06",
+          "metric": "SSIM",
+          "value": 0.5868938326835632,
+          "display": "0.587"
+        },
+        {
+          "sequence": "06",
+          "metric": "LPIPS",
+          "value": 0.3703858006000519,
+          "display": "0.370"
+        },
+        {
+          "sequence": "06",
+          "metric": "TIME",
+          "value": 163.2857329845428,
+          "display": "163.29"
+        },
+        {
+          "sequence": "07",
+          "metric": "ATE",
+          "value": 0.9843472643089463,
+          "display": "0.984"
+        },
+        {
+          "sequence": "07",
+          "metric": "PSNR",
+          "value": 20.86708828806877,
+          "display": "20.87"
+        },
+        {
+          "sequence": "07",
+          "metric": "SSIM",
+          "value": 0.7383508160710335,
+          "display": "0.738"
+        },
+        {
+          "sequence": "07",
+          "metric": "LPIPS",
+          "value": 0.2210427805160483,
+          "display": "0.221"
+        },
+        {
+          "sequence": "07",
+          "metric": "TIME",
+          "value": 160.1596970558167,
+          "display": "160.16"
+        },
+        {
+          "sequence": "08",
+          "metric": "ATE",
+          "value": 0.4546300853602768,
+          "display": "0.455"
+        },
+        {
+          "sequence": "08",
+          "metric": "PSNR",
+          "value": 19.16129340296206,
+          "display": "19.16"
+        },
+        {
+          "sequence": "08",
+          "metric": "SSIM",
+          "value": 0.6836585143338079,
+          "display": "0.684"
+        },
+        {
+          "sequence": "08",
+          "metric": "LPIPS",
+          "value": 0.2677471028721851,
+          "display": "0.268"
+        },
+        {
+          "sequence": "08",
+          "metric": "TIME",
+          "value": 147.0216777324677,
+          "display": "147.02"
+        },
+        {
+          "sequence": "10",
+          "metric": "ATE",
+          "value": 6.112015148070566,
+          "display": "6.112"
+        },
+        {
+          "sequence": "10",
+          "metric": "PSNR",
+          "value": 14.98149290084839,
+          "display": "14.98"
+        },
+        {
+          "sequence": "10",
+          "metric": "SSIM",
+          "value": 0.4981683373451233,
+          "display": "0.498"
+        },
+        {
+          "sequence": "10",
+          "metric": "LPIPS",
+          "value": 0.472074590921402,
+          "display": "0.472"
+        },
+        {
+          "sequence": "10",
+          "metric": "TIME",
+          "value": 200.8875956535339,
+          "display": "200.89"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "ATE",
+          "value": 1.6087906999154569,
+          "display": "1.609"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "PSNR",
+          "value": 18.970113368289194,
+          "display": "18.97"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "SSIM",
+          "value": 0.634546799617887,
+          "display": "0.635"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "LPIPS",
+          "value": 0.31453212378026946,
+          "display": "0.315"
+        },
+        {
+          "sequence": "Avg.",
+          "metric": "TIME",
+          "value": 158.17570701241493,
+          "display": "158.18"
+        }
+      ]
+    }
+  ]
+}

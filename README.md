@@ -96,4 +96,3 @@ GT 位姿和数据集深度只用于评测，不参与跟踪或建图。ATE 只�
 - `simple-knn`：高斯邻域计算 CUDA 扩展，源码保留 Inria / GRAPHDECO 版权及研究用途声明。
 
 组件来源与许可记录见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。保留各目录中的许可证与版权声明；附带的 CLIDD S64 可对照官方发布核验或重新下载，DA2 权重需从官方来源独立获取。不要把某一组件的宽松许可推广为整个工程或所有模型的许可。
-

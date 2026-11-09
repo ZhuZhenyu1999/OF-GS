@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f0">
+  <meta name="description" content="TEST2-SLAM：面向室外场景的单目三维高斯 SLAM 研究项目。探索 CLIDD 特征、共视局部 BA、深度引导的高斯建图与实验记录。">
+  <title>TEST2-SLAM — 从单目图像，重建三维世界</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="TEST2-SLAM 首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>TEST2<span class="brand-light">–SLAM</span></a>
+    <nav aria-label="主导航"><a href="#method">方法</a><a href="#visuals">可视化</a><a href="#experiments">实验</a><a href="#quickstart">快速开始</a></nav>
+    <a class="header-link" data-repository-link href="#quickstart"><span data-repository-label>运行指南</span> <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> MONOCULAR · 3D GAUSSIAN SLAM</div>
+        <h1 id="hero-title">从单目图像，<br>重建<span class="accent-word">三维世界<span class="title-dot">。</span></span></h1>
+        <p class="hero-description">让几何跟踪与高斯建图协同工作。<br>面向室外场景，探索从连续图像到相机轨迹与三维场景地图的完整过程。</p>
+        <div class="hero-actions"><a class="button button-dark" href="#visuals">探索项目 <span aria-hidden="true">↗</span></a><a class="text-link" href="#method">了解方法 <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-footnote"><span class="tiny-cross" aria-hidden="true">＋</span> RGB INPUT <span>/</span> GEOMETRIC TRACKING <span>/</span> GAUSSIAN MAP</div>
+      </div>
+      <figure class="hero-visual">
+        <div class="image-topline"><span><span class="small-dot"></span> GAUSSIAN GEOMETRY</span><span>VIEW 094</span></div>
+        <img src="assets/gaussian-map.png" width="1920" height="1280" alt="保存地图在街道视角下的不透明高斯椭球几何示意，包含道路、树木与建筑" fetchpriority="high">
+        <div class="image-axis" aria-hidden="true"><span>Y</span><i></i><b>X</b><em>Z</em></div>
+        <figcaption><span>以高斯，描述场景。</span><span>保存地图的几何示意 ↗</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="capability-strip wrap" aria-label="核心方法组成"><div><span>01 / FEATURE</span><strong>CLIDD 特征</strong></div><div><span>02 / GEOMETRY</span><strong>共视局部 BA</strong></div><div><span>03 / DEPTH</span><strong>单目深度 + GuidedMVS</strong></div><div><span>04 / MAPPING</span><strong>3D Gaussian 建图</strong></div></div>
+
+    <section id="method" class="section wrap" aria-labelledby="method-title">
+      <div class="section-intro"><div><p class="eyebrow">01 / THE METHOD</p><h2 id="method-title">从二维观测，到三维表达。</h2></div><p>以特征构建几何关系，以深度引导高斯采样，<br class="desktop-break">在在线建图中持续优化位姿与地图。</p></div>
+      <div class="method-layout">
+        <div class="method-steps" role="tablist" aria-label="系统处理步骤" aria-orientation="vertical">
+          <button type="button" id="step-tab-0" class="step active" role="tab" aria-selected="true" aria-controls="step-panel" data-step="0"><span>01</span><div><strong>提取与初始化</strong><small>CLIDD · RANSAC · mini-BA</small></div><b aria-hidden="true">↗</b></button>
+          <button type="button" id="step-tab-1" class="step" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1" data-step="1"><span>02</span><div><strong>共视几何优化</strong><small>Local bundle adjustment</small></div><b aria-hidden="true">↗</b></button>
+          <button type="button" id="step-tab-2" class="step" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1" data-step="2"><span>03</span><div><strong>深度引导建图</strong><small>GuidedMVS · Gaussian sampling</small></div><b aria-hidden="true">↗</b></button>
+          <button type="button" id="step-tab-3" class="step" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1" data-step="3"><span>04</span><div><strong>位姿与地图协同</strong><small>Mapping · Joint optimization</small></div><b aria-hidden="true">↗</b></button>
+        </div>
+        <div class="method-panel" id="step-panel" role="tabpanel" aria-labelledby="step-tab-0" tabindex="0">
+          <div class="panel-top"><span id="step-kicker">FEATURES TO GEOMETRY</span><span id="step-count">01 / 04</span></div>
+          <div class="pipeline-illustration" aria-hidden="true"><div class="frame-stack"><i></i><i></i><i><span>RGB</span></i></div><span class="flow-arrow">⟶</span><div class="feature-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="flow-arrow">⟶</span><div class="camera-shape">3D<span>◇</span></div></div>
+          <h3 id="step-title">为三维地图建立几何起点。</h3>
+          <p id="step-description">使用 CLIDD 特征建立跨帧对应，通过 RANSAC / PnP 与 mini-BA 估计初始位姿。8 个 bootstrap 关键帧共同构成初始化窗口，随后进入高斯建图。</p>
+          <div class="method-detail" id="step-detail">输入：单目 RGB 图像序列 <span>输出：关键帧位姿与稀疏几何</span></div>
+        </div>
+      </div>
+      <a class="subtle-link" href="assets/system-pipeline.png" target="_blank" rel="noopener">查看完整系统流程图 <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section id="visuals" class="visual-section" aria-labelledby="visuals-title"><div class="wrap">
+      <div class="section-intro"><div><p class="eyebrow">02 / INSIDE THE SCENE</p><h2 id="visuals-title">看见场景的另一种表达。</h2></div><p>从图像、几何到深度，<br>观察同一个街道场景的不同表示。</p></div>
+      <div class="visual-toolbar"><div class="pill-tabs" role="tablist" aria-label="可视化视图"><button id="visual-tab-overview" role="tab" aria-selected="true" aria-controls="visual-panel" data-view="overview">图像与几何</button><button id="visual-tab-detail" role="tab" aria-selected="false" aria-controls="visual-panel" tabindex="-1" data-view="detail">局部细节</button><button id="visual-tab-depth" role="tab" aria-selected="false" aria-controls="visual-panel" tabindex="-1" data-view="depth">相对深度</button></div><span class="scene-id">WAYMO / 153495 / FRAME 000094</span></div>
+      <figure id="visual-panel" class="scene-figure" role="tabpanel" aria-labelledby="visual-tab-overview" tabindex="0"><div class="scene-image"><img id="scene-image" src="assets/scene-comparison.png" width="1872" height="760" loading="lazy" alt="Waymo 街道原图与保存高斯地图的不透明椭球视图并排展示"><button class="expand-button" type="button" id="expand-image" aria-label="放大当前可视化图片">⤢</button></div><figcaption><span id="scene-label">RGB IMAGE → GAUSSIAN ELLIPSOIDS</span><span id="scene-description">由项目脚本绘制的 1σ 不透明几何表面，非 3DGS 合成渲染。</span></figcaption></figure>
+      <p id="scene-note" class="figure-note">图示来自已保存的地图文件；地图运行来源未核验，不作为本方法的重建质量结论。原图与椭球视图不保证像素级对齐。</p>
+    </div></section>
+
+    <section id="experiments" class="section wrap" aria-labelledby="experiments-title">
+      <div class="section-intro"><div><p class="eyebrow">03 / EXPERIMENT RECORDS</p><h2 id="experiments-title">让实验记录可供检查。</h2></div><p>当前 Waymo 与 KITTI 实验汇总。<br>指标按片段等权平均，保留各自的评测语义。</p></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="可横向滚动的实验数据表"><table><caption class="sr-only">2026 年 11 月 9 日已有实验记录中 Ours 行的逐片段等权均值</caption><thead><tr><th scope="col">数据集 / Dataset</th><th scope="col">片段数</th><th scope="col">ATE <small>m ↓</small></th><th scope="col">PSNR <small>dB ↑</small></th><th scope="col">SSIM <small>↑</small></th><th scope="col">LPIPS <small>↓</small></th><th scope="col">Time <small>s ↓</small></th></tr></thead><tbody><tr><th scope="row">Waymo <span>Outdoor driving</span></th><td>9</td><td>0.622</td><td>27.42</td><td>0.868</td><td>0.219</td><td>174.64</td></tr><tr><th scope="row">KITTI <span>Visual odometry</span></th><td>8</td><td>1.609</td><td>18.97</td><td>0.635</td><td>0.315</td><td>158.18</td></tr></tbody></table></div>
+      <div class="experiment-notes"><p><span class="note-marker">↳</span> 记录日期 2026.11.09 · 实验硬件 RTX 4090。当前各方法的评测帧、LPIPS 配置与计时范围尚未完全统一；这里展示本项目已有记录，不作统一基准排名。</p><a class="subtle-link" href="assets/experiment-records.json" download>下载数据与说明 ↓</a></div>
+      <div class="evaluation-grid"><div><span>TRAJECTORY</span><h3>两个阶段，分别留存。</h3><p>输出前端 mini-BA 与在线建图的关键帧轨迹。ATE 以关键帧 GT 作 Sim(3) 对齐后统计，GT 不参与跟踪与建图。</p></div><div><span>RENDERING</span><h3>在留出帧上评测图像。</h3><p>PSNR、SSIM、LPIPS 统计由 <code>--test_hold</code> 选中的评测帧；缺少 GT 时仍输出原始轨迹，ATE 留空。</p></div><div><span>DATASETS</span><h3>四种数据读取入口。</h3><p>提供 Waymo、KITTI、DL3DV 与 TUM loader，可按序列运行，也可使用批量脚本汇总输出。</p></div></div>
+    </section>
+
+    <section id="quickstart" class="start-section" aria-labelledby="start-title"><div class="wrap start-grid">
+      <div><p class="eyebrow">04 / GET STARTED</p><h2 id="start-title">从一个序列开始。</h2><p class="start-description">在 Linux + CUDA 环境中准备数据与模型权重，<br>运行独立入口 <code>slam.py</code>。</p><ol class="setup-list"><li><span>01</span><p>安装匹配 CUDA 的 PyTorch 与 CuPy，以及 <code>requirements.txt</code> 中的依赖。</p></li><li><span>02</span><p>准备 CLIDD S64、Depth Anything V2 权重，并编译项目中的 CUDA 扩展。</p></li><li><span>03</span><p>选择数据集，把示例中的 <code>/path/to/</code> 替换为实际数据路径。</p></li></ol><a class="text-link" href="#resources">相关项目与许可 <span aria-hidden="true">↗</span></a></div>
+      <div class="terminal"><div class="terminal-header"><div class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></div><span>RUN A SEQUENCE</span><span>BASH</span></div><div class="command-tabs" role="tablist" aria-label="运行命令数据集"><button role="tab" id="command-tab-kitti" aria-selected="true" aria-controls="command-panel" data-dataset="kitti">KITTI</button><button role="tab" id="command-tab-waymo" aria-selected="false" aria-controls="command-panel" tabindex="-1" data-dataset="waymo">Waymo</button><button role="tab" id="command-tab-dl3dv" aria-selected="false" aria-controls="command-panel" tabindex="-1" data-dataset="dl3dv">DL3DV</button><button role="tab" id="command-tab-tum" aria-selected="false" aria-controls="command-panel" tabindex="-1" data-dataset="tum">TUM</button></div><div id="command-panel" role="tabpanel" aria-labelledby="command-tab-kitti" tabindex="0"><p class="code-comment" id="command-comment"># KITTI 07 · 左彩色相机 P2</p><pre><code id="run-command">python slam.py \
+  -s /path/to/KITTI/07 \
+  --dataset_type kitti \
+  --kitti_camera 2 \
+  --test_hold 8 \
+  --viewer_mode none \
+  -m results/kitti_07</code></pre><p id="command-note" class="command-note">输入为已校正的 pinhole 图像；每个序列读取自己的 calib.txt。</p></div><div class="terminal-footer"><span id="copy-status" role="status" aria-live="polite">在项目根目录执行</span><button type="button" id="copy-command">复制命令 <span aria-hidden="true">⧉</span></button></div></div>
+    </div></section>
+
+    <section id="resources" class="resources wrap" aria-labelledby="resources-title"><div><p class="eyebrow">BUILT ON RESEARCH</p><h2 id="resources-title">站在已有研究的基础上。</h2><p>项目使用 CLIDD、Depth Anything V2 和 3D Gaussian Splatting 相关组件。代码使用遵循仓库及上游组件各自的许可证。</p></div><div class="resource-links"><a href="https://github.com/HITCSC/CLIDD" target="_blank" rel="noopener">CLIDD <span>特征检测与匹配 ↗</span></a><a href="https://github.com/DepthAnything/Depth-Anything-V2" target="_blank" rel="noopener">Depth Anything V2 <span>单目深度先验 ↗</span></a><a href="reference/LICENSE.md" target="_blank" rel="noopener">项目许可证 <span>研究与评估用途 ↗</span></a></div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="#">TEST2<span class="brand-light">–SLAM</span></a><span>单目视觉 · 几何跟踪 · 三维高斯建图</span><a href="#main">回到顶部 ↑</a></footer>
+  <dialog id="image-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><h2 id="dialog-title">可视化图像</h2><button type="button" id="close-dialog" aria-label="关闭放大图片">关闭 ×</button></div><img id="dialog-image" src="assets/scene-comparison.png" alt="放大的场景可视化"><p id="dialog-caption"></p></dialog>
+</body>
+</html>
