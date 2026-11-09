@@ -1563,4 +1563,3 @@ def test_evaluate_test_frame_does_not_delete_missing_invdepth(monkeypatch):
 
     assert set(metrics) == {"PSNR", "SSIM"}
     assert metrics["SSIM"] == 0.5
-
