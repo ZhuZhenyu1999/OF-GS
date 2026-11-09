@@ -4,9 +4,9 @@
 
 **OF-GS 是 GitHub 仓库名称；当前代码内部名称仍为 TEST2-SLAM，独立运行入口为 `slam.py`。** 终端输出、历史结果和部分文件名保留 TEST2-SLAM，不影响在 `OF-GS/` 目录下运行。
 
-[使用指南](docs/USAGE.md) · [网站部署](docs/DEPLOY.md) · [项目许可证](LICENSE.md)
+[在线网站](https://zhuzhenyu1999.github.io/OF-GS/) · [使用指南](docs/USAGE.md) · [网站部署](docs/DEPLOY.md) · [项目许可证](LICENSE.md)
 
-项目网站采用 `docs/` 静态页面与 GitHub Actions。预期发布地址为 <https://ZhuZhenyu1999.github.io/OF-GS/>；此地址需要在仓库启用 Pages 并成功部署后才可访问，本文不表示部署已经完成。
+项目网站已通过 GitHub Pages 发布：<https://zhuzhenyu1999.github.io/OF-GS/>。网站源文件位于 `docs/`，后续更新由 Pages 工作流自动部署。
 
 ## 项目内容
 
@@ -82,6 +82,10 @@ python slam.py \
 GT 位姿和数据集深度只用于评测，不参与跟踪或建图。ATE 只统计关键帧，采用 Sim(3) 对齐；没有 GT 时保留原始轨迹，ATE 留空。PSNR/SSIM/LPIPS 仅统计 `--test_hold` 选择的帧；默认 `-1` 不选择图像评测留出帧，示例中的 `8` 选择 frame id 为 8、16、24、… 的帧。
 
 非关键帧且非评测帧通常不估计位姿，不能把输出解读为连续逐帧跟踪轨迹。当前序列结束后直接保存与评测在线建图结果，不再执行额外的全关键帧最终位姿细化。跨方法比较前需统一输入、评测帧、LPIPS 配置、对齐方式和计时范围。
+
+## 自动检查
+
+GitHub Actions 执行源码预检和 CPU 回归测试；[查看运行记录](https://github.com/ZhuZhenyu1999/OF-GS/actions/workflows/checks.yml)。2026-11-09 的 Linux 检查为 **590 passed, 10 skipped**，跳过项需要 GPU。CPU 检查通过不代表定制 CUDA 扩展与真实数据集上的完整 SLAM 已在该运行器验证。
 
 ## 许可证与上游组件
 
